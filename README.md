@@ -29,7 +29,7 @@ An easy way for understanding this technique is to think that we're dividing the
 ### Training the circuit little by little :walking:
 
 #### Layer structure
-A layer in this approach is composed by a set of single qubit rotations randomly chosen between RZ, RY and RZ rotations in each qubit and a set of CZ two qubits gates in a ladder structure.
+A layer in this approach is composed by a set of single qubit gates randomly chosen between RZ, RY and RZ rotations in each qubit and a set of CZ two qubits gates in a ladder structure.
 
 IMAGE HERE
 
