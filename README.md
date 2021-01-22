@@ -20,14 +20,25 @@ There is a very well known problem when trying to train effectively a Quantum Ne
 
 Different strategies have been proposed for avoiding Barren Plateaus for example by using [local cost function](https://pennylane.ai/qml/demos/tutorial_local_cost_functions.html).
 
-In __layerwise learning__ the strategy is to gradually increase the number of parameters by adding a few layers and training them while freezing the parameters of previous layers already trained. Once you've reached the complete size of the circuit 
+In __layerwise learning__ the strategy is to gradually increase the number of parameters by adding a few layers and training them while freezing the parameters of previous layers already trained. Once you've reached the complete size of the circuit then you define a partition of the weights to train first on that subset of the weights and then on the remaining weights. Our implemention here is very simple, first we train over the first half of the circuit while freezing the other half and then we swap to train the other part.
 
-
+An easy way for understanding this technique is to think that we're dividing the problem into smaller circuits to successfully avoid to fall into Barren Plateaus :muscle:
 
 ### Training the circuit little by little :walking:
 
-Phase I the size of the circuit is gradually increased at each step of the training while freezing previuos layers
+#### Layer structure
+A layer in this approach is composed by a set of single qubit rotations randomly chosen between RZ, RY and RZ rotations in each qubit and a set of CZ two qubits gates in a ladder structure.
 
+IMAGE HERE
+
+
+Layerwise learning is divided in two learning phases:
+
+#### Phase I: Increasing the circuit size
+
+As we mentioned earlier, here the idea is to define a number of layers to add in each step of Phase I, e.g two layers per step, 
+
+#### Phase II: Split the circuit into pieces
 
 #### Main ingredients :bread:
 
@@ -40,7 +51,9 @@ In our implementation the main component is to transform the quantum circuit int
 
 ## References
 [Barren Plateaus paper](https://arxiv.org/abs/1803.11173)
+
 [blog post](https://blog.tensorflow.org/2020/08/layerwise-learning-for-quantum-neural-networks.html)
+
 [Tensorflow quantum YouTube's video about layerwise learning](https://www.youtube.com/watch?v=lz8BOz5KPZg)
 
 [Theodor Isacsson](https://github.com/thisac)
