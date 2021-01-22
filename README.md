@@ -8,7 +8,7 @@ The task selected for this _PoC_ is the same used in the original paper for the 
 
 ## About us :flushed:
 
-__For LinkedIn:__ My name is Felipe Oyarce. Master in Quantum Optics. Machine Learning Developer at [NotCo's](https://notco.com/us/) AI Team and Quantum Computing Enthusiast. Inspired in technological solutions to real-world problems. 
+__For LinkedIn:__ My name is [Felipe Oyarce](https://www.linkedin.com/in/fioyarce/). Master in Quantum Optics. Machine Learning Developer at [NotCo's](https://notco.com/us/) AI Team and Quantum Computing Enthusiast. Inspired in technological solutions to real-world problems. 
 
 __Official description:__ I'm a Broccoli, excellent for health but I don't attract people's attention. Sometimes I cry a little.
 
@@ -29,27 +29,32 @@ An easy way for understanding this technique is to think that we're dividing the
 ### Training the circuit little by little :walking:
 
 #### Layer structure
-A layer in this approach is composed by a set of single qubit gates randomly chosen between RZ, RY and RZ rotations in each qubit and a set of CZ two qubits gates in a ladder structure.
+A layer in this approach is composed by a set of single qubit gates randomly chosen between RZ, RY and RZ rotations in each qubit and a set of CZ two qubits gates in a ladder structure. Forget about the parameters in the example image, those are the trainable parameters of each layer.
 
-IMAGE HERE
-
+![](images/layer.png)
+*image caption*
 
 Layerwise learning is divided in two learning phases:
 
 #### Phase I: Increasing the circuit size
 
-As we mentioned earlier, here the idea is to define a number of layers to add in each step of Phase I, e.g two layers per step, 
+As we mentioned earlier, here the idea is to define a number of layers to add in each step of Phase I, e.g two layers per step, and optimize the circuit just considering the new parameters as trainable parameters while freezing the previous layers.
+
+IMAGE
 
 #### Phase II: Split the circuit into pieces
 
+Then, the circuit is splitted into larger partitions with the parameters from Phase I, so we consider these parameters as the initial weights in the optimization. In each sweep you train a partition of the weights while freezing the other partitions. Remember that here we train over halves of the circuit.
+
 #### Main ingredients :bread:
 
-- 
-- Initialize all the weights as zero.
+- Choose a way for encoding the data into the circuit. Here we use an [Angle Encoding](https://pennylane.readthedocs.io/en/stable/code/api/pennylane.templates.embeddings.AngleEmbedding.html).
+- Implement the layer structure. 
+- In Phase I, Initialize all the weights as zero.
 
 ## Our implementation :smile:
 
-In our implementation the main component is to transform the quantum circuit into a [TorchLayer](https://pennylane.readthedocs.io/en/stable/code/api/pennylane.qnn.TorchLayer.html) to be used within a [Sequential](https://pytorch.org/docs/stable/generated/torch.nn.Sequential.html) model in Pytorch.
+In our implementation we transform the quantum circuit into a [TorchLayer](https://pennylane.readthedocs.io/en/stable/code/api/pennylane.qnn.TorchLayer.html) to be used within a [Sequential](https://pytorch.org/docs/stable/generated/torch.nn.Sequential.html) model in Pytorch.
 
 ## References
 [Barren Plateaus paper](https://arxiv.org/abs/1803.11173)
