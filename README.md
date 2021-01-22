@@ -14,7 +14,7 @@ __Official description:__ I'm a Broccoli, excellent for health but I don't attra
 
 ## Overview of Layerwise learning :nerd_face:
 
-There is a very well known problem when trying to train effectively a Quantum Neural Network (or Parametrized Quantum Circuit) called [Barren Plateaus](https://pennylane.ai/qml/demos/tutorial_barren_plateaus.html), described as the phenomenon in which the gradients of a quantum circuit vanish exponentially when the size of the circuit to train increases, this means more qubits and layers. This is a huge limitation because it requires to known very well the problem to solve in order to select properly the circuit architecture, if you want to start by random architectures you're going to face Barren Plateaus :sweat:. You can visualize Barren Plateaus like a very flat surface of the loss landscape, so its almost impossible to roll down (minimize the function) over this surface.
+There is a very well known problem when trying to train effectively a Quantum Neural Network (or Parametrized Quantum Circuit) called [Barren Plateaus](https://pennylane.ai/qml/demos/tutorial_barren_plateaus.html), described as the phenomenon in which the gradients of a quantum circuit vanish exponentially when the size of the circuit to train increases, this means more qubits and layers. This is a huge limitation because it requires to know very well the problem to solve in order to select properly the circuit architecture. If you want to start by random architectures you're going to face Barren Plateaus :sweat:. You can visualize Barren Plateaus like a very flat surface of the loss landscape, so its almost impossible to roll down (minimize the function) over this surface.
 
 ### Yes, but
 
