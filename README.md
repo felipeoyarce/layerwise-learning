@@ -32,7 +32,16 @@ An easy way for understanding this technique is to think that we're dividing the
 A layer in this approach is composed by a set of single qubit gates randomly chosen between RZ, RY and RZ rotations in each qubit and a set of CZ two qubits gates in a ladder structure. Forget about the parameters in the example image, those are the trainable parameters of each layer.
 
 ![](images/layer.png)
-*image caption*
+
+.center[
+
+![My image](https://upload.wikimedia.org/wikipedia/commons/b/be/Sharingan_triple.svg)
+
+.caption[
+**Fig. 1:** Image caption
+]
+
+]
 
 Layerwise learning is divided in two learning phases:
 
