@@ -8,9 +8,13 @@ The task selected for this _PoC_ is the same used in the original paper for the 
 
 ## About us :flushed:
 
+### Mentee
 __For LinkedIn:__ My name is [Felipe Oyarce](https://www.linkedin.com/in/fioyarce/). Master in Quantum Optics. Machine Learning Developer at [NotCo's](https://notco.com/us/) AI Team and Quantum Computing Enthusiast. Inspired in technological solutions to real-world problems. 
 
 __Official description:__ I'm a Broccoli, excellent for health but I don't attract people's attention. Sometimes I cry a little.
+
+### Mentor
+[Theodor Isacsson](https://github.com/thisac)
 
 ## Overview of Layerwise learning :nerd_face:
 
@@ -33,16 +37,6 @@ A layer in this approach is composed by a set of single qubit gates randomly cho
 
 ![](images/layer.png)
 
-.center[
-
-![My image](https://upload.wikimedia.org/wikipedia/commons/b/be/Sharingan_triple.svg)
-
-.caption[
-**Fig. 1:** Image caption
-]
-
-]
-
 Layerwise learning is divided in two learning phases:
 
 #### Phase I: Increasing the circuit size
@@ -55,11 +49,13 @@ IMAGE
 
 Then, the circuit is splitted into larger partitions with the parameters from Phase I, so we consider these parameters as the initial weights in the optimization. In each sweep you train a partition of the weights while freezing the other partitions. Remember that here we train over halves of the circuit.
 
+IMAGE
 #### Main ingredients :bread:
 
 - Choose a way for encoding the data into the circuit. Here we use an [Angle Encoding](https://pennylane.readthedocs.io/en/stable/code/api/pennylane.templates.embeddings.AngleEmbedding.html).
 - Implement the layer structure. 
 - In Phase I, Initialize all the weights as zero.
+- Think a how to partition the weights
 
 ## Our implementation :smile:
 
@@ -72,4 +68,3 @@ In our implementation we transform the quantum circuit into a [TorchLayer](https
 
 [Tensorflow quantum YouTube's video about layerwise learning](https://www.youtube.com/watch?v=lz8BOz5KPZg)
 
-[Theodor Isacsson](https://github.com/thisac)
