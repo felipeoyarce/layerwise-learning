@@ -14,7 +14,7 @@ __For LinkedIn:__ My name is [Felipe Oyarce](https://www.linkedin.com/in/fioyarc
 __Official description:__ I'm a Broccoli, excellent for health but I don't attract people's attention. Sometimes I cry a little.
 
 ### Mentor
-[Theodor Isacsson](https://github.com/thisac)
+[Theodor Isacsson](https://github.com/thisac): is a Quantum Software Developer at Xanadu, enthusiastic about pushing the limits of quantum computing software and expanding its usability and usefulness in the field. Outside of work he’s an avid traveller, enjoying adventurous trips, hiking and exploring the world.
 
 ## Overview of Layerwise learning :nerd_face:
 
@@ -37,34 +37,32 @@ A layer in this approach is composed by a set of single qubit gates randomly cho
 
 ![](images/layer.png)
 
-Layerwise learning is divided in two learning phases:
-
 #### Phase I: Increasing the circuit size
 
 As we mentioned earlier, here the idea is to define a number of layers to add in each step of Phase I, e.g two layers per step, and optimize the circuit just considering the new parameters as trainable parameters while freezing the previous layers.
 
-IMAGE
-
 #### Phase II: Split the circuit into pieces
 
-Then, the circuit is splitted into larger partitions with the parameters from Phase I, so we consider these parameters as the initial weights in the optimization. In each sweep you train a partition of the weights while freezing the other partitions. Remember that here we train over halves of the circuit.
+Then, the circuit is splitted into larger partitions with the parameters from Phase I, so we consider these parameters as the initial weights in the optimization. In each sweep you train a partition of the weights while freezing the other partitions. Remember that here we train the circuit in halves.
 
-IMAGE
 #### Main ingredients :bread:
 
 - Choose a way for encoding the data into the circuit. Here we use an [Angle Encoding](https://pennylane.readthedocs.io/en/stable/code/api/pennylane.templates.embeddings.AngleEmbedding.html).
 - Implement the layer structure. 
-- In Phase I, Initialize all the weights as zero.
-- Think a how to partition the weights
+- In Phase I, initialize all the weights as zero.
+- Think a way of training the circuit just on subsets of the total number of paramaters.
 
 ## Our implementation :smile:
 
 In our implementation we transform the quantum circuit into a [TorchLayer](https://pennylane.readthedocs.io/en/stable/code/api/pennylane.qnn.TorchLayer.html) to be used within a [Sequential](https://pytorch.org/docs/stable/generated/torch.nn.Sequential.html) model in Pytorch.
 
 ## References
-[Barren Plateaus paper](https://arxiv.org/abs/1803.11173)
+[[1]](https://arxiv.org/abs/1803.11173) McClean et al., 2018. Barren plateaus in quantum neural network training landscapes.
 
-[blog post](https://blog.tensorflow.org/2020/08/layerwise-learning-for-quantum-neural-networks.html)
+[[2]](https://arxiv.org/abs/2006.14904) Skolik et al., 2020. 
+Layerwise learning for quantum neural networks.
 
-[Tensorflow quantum YouTube's video about layerwise learning](https://www.youtube.com/watch?v=lz8BOz5KPZg)
+[[3]](https://blog.tensorflow.org/2020/08/layerwise-learning-for-quantum-neural-networks.html) Tensorflow quantum Blog post about layerwise learning.
+
+[[4]](https://www.youtube.com/watch?v=lz8BOz5KPZg) Tensorflow quantum YouTube's video about layerwise learning.
 
