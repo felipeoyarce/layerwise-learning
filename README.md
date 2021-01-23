@@ -14,7 +14,7 @@ __For LinkedIn:__ My name is [Felipe Oyarce](https://www.linkedin.com/in/fioyarc
 __Official description:__ I'm a Broccoli, excellent for health but I don't attract people's attention. Sometimes I cry a little.
 
 ### Mentor
-[Theodor Isacsson](https://github.com/thisac): is a Quantum Software Developer at Xanadu, enthusiastic about pushing the limits of quantum computing software and expanding its usability and usefulness in the field. Outside of work he’s an avid traveller, enjoying adventurous trips, hiking and exploring the world.
+[Theodor Isacsson](https://github.com/thisac) is a Quantum Software Developer at Xanadu, enthusiastic about pushing the limits of quantum computing software and expanding its usability and usefulness in the field. Outside of work he’s an avid traveller, enjoying adventurous trips, hiking and exploring the world.
 
 ## Overview of Layerwise learning :nerd_face:
 
@@ -50,7 +50,7 @@ Then, the circuit is splitted into larger partitions with the parameters from Ph
 - Choose a way for encoding the data into the circuit. Here we use an [Angle Encoding](https://pennylane.readthedocs.io/en/stable/code/api/pennylane.templates.embeddings.AngleEmbedding.html).
 - Implement the layer structure. 
 - In Phase I, initialize all the weights as zero.
-- Think a way of training the circuit just on subsets of the total number of paramaters.
+- Think a way of training the circuit just on subsets of the total number of parameters.
 
 ## Our implementation :smile:
 
